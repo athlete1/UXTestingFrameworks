@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>JR Cook,Robert Blackwood</authors>
+    <owners>$author$</owners>
+    <projectUrl>http://confluence/display/MAE/Feature.Test.Selenium+Framework</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>See release notes: http://confluence/display/MAE/Feature.Test.Selenium+Release+Notes.</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>testing automation web browser selenium</tags>
+	<dependencies>
+            <dependency id="UX.Testing.Core" version="1.0.0.0" />
+            <dependency id="Selenium.WebDriver" version="2.40.0" />
+            <dependency id="Selenium.Support" version="2.40.0" />
+    </dependencies>
+  </metadata>
+  <files>
+	  <file src="App.config.install.xdt" target="content" />
+	  <file src="App.config.uninstall.xdt" target="content" /> 
+  </files>
+</package>

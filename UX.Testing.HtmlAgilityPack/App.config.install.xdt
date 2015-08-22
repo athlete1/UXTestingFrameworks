@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<configSections xdt:Transform="InsertIfMissing">
+		<section xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)" name="testSettings" type="UX.Testing.Core.TestSettings, UX.Testing.Core" allowLocation="true" allowDefinition="Everywhere" />
+		<section xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)" name="nlog" type="NLog.Config.ConfigSectionHandler, NLog" />
+	</configSections>
+	<appSettings xdt:Transform="InsertIfMissing">
+	</appSettings>
+	<testSettings xdt:Transform="InsertIfMissing" baseUrl="http://localhost/" browser="UnitTest" timeout="30000" interval="500" debug="false">
+		<provider assembly="UX.Testing.HtmlAgilityPack" type="UX.Testing.HtmlAgilityPack.TestingFramework" />
+	</testSettings>
+	<nlog xdt:Transform="InsertIfMissing" xmlns="http://www.nlog-project.org/schemas/NLog.xsd">
+		<targets>
+			<target type="NLogViewer" name="Log2Console" address="udp://127.0.0.1:7071"
+		  layout="${event-context:item=messageType} ${longdate} | ${level:uppercase=true} | ${stacktrace} | ${message}" />
+			<target name="console"
+		  type="ColoredConsole"
+		  header="${machinename} - Started at: ${longdate}"
+		  layout="${event-context:item=messageType} ${longdate} | ${level:uppercase=true} | ${stacktrace} | ${message}" />
+			<target name="file"
+		  type="File"
+		  fileName="${basedir}/${shortdate}-file.txt"
+		  archiveFileName="${basedir}/${shortdate}-file-{###}.txt"
+		  archiveNumbering="Rolling"
+		  maxArchiveFiles="4"
+		  archiveEvery="Day"
+		  layout="${level:uppercase=true} ${longdate}: ${stacktrace} ${message}"
+		  header="${machinename} - Started at: ${longdate} - File location: ${basedir}/${shortdate}-file.txt"
+		  footer="Last operation completed at: ${longdate}"/>
+			<target name="Testing"
+		  type="File"
+		  fileName="${basedir}/${shortdate}-TestingLog.txt"
+		  archiveFileName="${basedir}/${shortdate}-TestingLog-{###}.txt"
+		  archiveNumbering="Rolling"
+		  maxArchiveFiles="5"
+		  archiveEvery="Day"
+		  layout="${level:uppercase=true} ${longdate}: ${message} ${newline} ${stacktrace}"
+		  header="${machinename} - Started at: ${longdate} - File location: ${basedir}/${shortdate}-TestingLog.txt"
+		  footer="Last operation completed at: ${longdate}"/>
+		</targets>
+		<rules>
+			<logger name="*" minlevel="Trace" writeTo="Log2Console" />
+			<logger name="*" minlevel="Error" writeTo="Testing" />
+		</rules>
+	</nlog>
+</configuration>

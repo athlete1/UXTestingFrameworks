@@ -1,0 +1,41 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="HtmlDialog.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The html div.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+namespace UX.Testing.Core.Controls
+{
+	/// <summary>The html div.</summary>
+	public class HtmlDialog : HtmlControl
+	{
+		#region Public Properties
+
+		/// <summary>Gets the html tag.</summary>
+		public override HtmlTag HtmlTag
+		{
+			get
+			{
+				return HtmlTag.dialog;
+			}
+		}
+
+		/// <summary>Gets or sets the open.</summary>
+		public string Open
+		{
+			get
+			{
+				return this.GetAttribute("open");
+			}
+
+			set
+			{
+				this.AddAttribute("open", value);
+			}
+		}
+
+		#endregion
+	}
+}

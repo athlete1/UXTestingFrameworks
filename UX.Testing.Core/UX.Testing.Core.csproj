@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9B15BB60-2CF3-4FC9-BC24-3F33C5E75614}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UX.Testing.Core</RootNamespace>
+    <AssemblyName>UX.Testing.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>True</SpecificVersion>
+      <HintPath>Lib\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=3.1.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NLog.3.1.0.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\TestStep.cs" />
+    <Compile Include="Attributes\CleanupStep.cs" />
+    <Compile Include="BaseTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BrowserlessBaseTests.cs" />
+    <Compile Include="By.cs" />
+    <Compile Include="Controls\HtmlDynamic.cs" />
+    <Compile Include="Controls\HtmlInputButton.cs" />
+    <Compile Include="Controls\HtmlCanvas.cs" />
+    <Compile Include="Controls\HtmlBiDirectionalOverride.cs" />
+    <Compile Include="Controls\HtmlBlockQuote.cs" />
+    <Compile Include="Controls\HtmlBody.cs" />
+    <Compile Include="Controls\HtmlColGroup.cs" />
+    <Compile Include="Controls\HtmlInputHidden.cs" />
+    <Compile Include="Controls\HtmlInputRadioButton.cs" />
+    <Compile Include="Controls\HtmlInputCheckBox.cs" />
+    <Compile Include="Controls\HtmlInputColor.cs" />
+    <Compile Include="Controls\HtmlInputFile.cs" />
+    <Compile Include="Controls\HtmlInputDate.cs" />
+    <Compile Include="Controls\HtmlInputDateTime.cs" />
+    <Compile Include="Controls\HtmlInputEmail.cs" />
+    <Compile Include="Controls\HtmlInputImage.cs" />
+    <Compile Include="Controls\HtmlInputMonth.cs" />
+    <Compile Include="Controls\HtmlInputNumber.cs" />
+    <Compile Include="Controls\HtmlInputRange.cs" />
+    <Compile Include="Controls\HtmlInputReset.cs" />
+    <Compile Include="Controls\HtmlInputSearch.cs" />
+    <Compile Include="Controls\HtmlInputWeek.cs" />
+    <Compile Include="Controls\HtmlInputTime.cs" />
+    <Compile Include="Controls\HtmlInputUrl.cs" />
+    <Compile Include="Controls\HtmlKeyboard.cs" />
+    <Compile Include="Controls\HtmlDeleted.cs" />
+    <Compile Include="Controls\HtmlDetails.cs" />
+    <Compile Include="Controls\HtmlDefinition.cs" />
+    <Compile Include="Controls\HtmlDialog.cs" />
+    <Compile Include="Controls\HtmlDescriptionList.cs" />
+    <Compile Include="Controls\HtmlDescriptionTerm.cs" />
+    <Compile Include="Controls\HtmlHead.cs" />
+    <Compile Include="Controls\HtmlHeader.cs" />
+    <Compile Include="Controls\HtmlHorizontalRule.cs" />
+    <Compile Include="Controls\HtmlHtml.cs" />
+    <Compile Include="Controls\HtmlItalic.cs" />
+    <Compile Include="Controls\HtmlIFrame.cs" />
+    <Compile Include="Controls\HtmlImage.cs" />
+    <Compile Include="Controls\HtmlInserted.cs" />
+    <Compile Include="Controls\HtmlEmphasize.cs" />
+    <Compile Include="Controls\HtmlEmbed.cs" />
+    <Compile Include="Controls\HtmlFieldset.cs" />
+    <Compile Include="Controls\HtmlFigureCaption.cs" />
+    <Compile Include="Controls\HtmlFigure.cs" />
+    <Compile Include="Controls\HtmlFooter.cs" />
+    <Compile Include="Controls\HtmlForm.cs" />
+    <Compile Include="Controls\HtmlH1.cs" />
+    <Compile Include="Controls\HtmlH2.cs" />
+    <Compile Include="Controls\HtmlH3.cs" />
+    <Compile Include="Controls\HtmlH4.cs" />
+    <Compile Include="Controls\HtmlH5.cs" />
+    <Compile Include="Controls\HtmlH6.cs" />
+    <Compile Include="Controls\HtmlKeygen.cs" />
+    <Compile Include="Controls\HtmlLabel.cs" />
+    <Compile Include="Controls\HtmlLegend.cs" />
+    <Compile Include="Controls\HtmlListItem.cs" />
+    <Compile Include="Controls\HtmlLink.cs" />
+    <Compile Include="Controls\HtmlMap.cs" />
+    <Compile Include="Controls\HtmlMark.cs" />
+    <Compile Include="Controls\HtmlMenu.cs" />
+    <Compile Include="Controls\HtmlMeta.cs" />
+    <Compile Include="Controls\HtmlLineBreak.cs" />
+    <Compile Include="Controls\HtmlButton.cs" />
+    <Compile Include="Controls\HtmlCaption.cs" />
+    <Compile Include="Controls\HtmlCite.cs" />
+    <Compile Include="Controls\HtmlCode.cs" />
+    <Compile Include="Controls\HtmlCol.cs" />
+    <Compile Include="Controls\HtmlCommand.cs" />
+    <Compile Include="Controls\HtmlDataList.cs" />
+    <Compile Include="Controls\HtmlDescriptionDefinition.cs" />
+    <Compile Include="Controls\HtmlBiDirectionalIsolation.cs" />
+    <Compile Include="Controls\HtmlMeter.cs" />
+    <Compile Include="Controls\HtmlNav.cs" />
+    <Compile Include="Controls\HtmlNoScript.cs" />
+    <Compile Include="Controls\HtmlOrderedList.cs" />
+    <Compile Include="Controls\HtmlOptionGroup.cs" />
+    <Compile Include="Controls\HtmlOption.cs" />
+    <Compile Include="Controls\HtmlOutput.cs" />
+    <Compile Include="Controls\HtmlParameter.cs" />
+    <Compile Include="Controls\HtmlPreformatted.cs" />
+    <Compile Include="Controls\HtmlProgress.cs" />
+    <Compile Include="Controls\HtmlQuote.cs" />
+    <Compile Include="Controls\HtmlSamp.cs" />
+    <Compile Include="Controls\HtmlScript.cs" />
+    <Compile Include="Controls\HtmlSelect.cs" />
+    <Compile Include="Controls\HtmlSmall.cs" />
+    <Compile Include="Controls\HtmlSource.cs" />
+    <Compile Include="Controls\HtmlTableCellBase.cs" />
+    <Compile Include="Controls\HtmlTime.cs" />
+    <Compile Include="Controls\HtmlTitle.cs" />
+    <Compile Include="Controls\HtmlTableRow.cs" />
+    <Compile Include="Controls\HtmlTrack.cs" />
+    <Compile Include="Controls\HtmlUnderline.cs" />
+    <Compile Include="Controls\HtmlUnorderedList.cs" />
+    <Compile Include="Controls\HtmlVariable.cs" />
+    <Compile Include="Controls\HtmlVideo.cs" />
+    <Compile Include="Controls\HtmlWordBreakOpportunity.cs" />
+    <Compile Include="Controls\HtmlTableBody.cs" />
+    <Compile Include="Controls\HtmlTableCell.cs" />
+    <Compile Include="Controls\HtmlTextArea.cs" />
+    <Compile Include="Controls\HtmlTableFooter.cs" />
+    <Compile Include="Controls\HtmlTableHeader.cs" />
+    <Compile Include="Controls\HtmlTableHeadCell.cs" />
+    <Compile Include="Controls\HtmlStrong.cs" />
+    <Compile Include="Controls\HtmlStyle.cs" />
+    <Compile Include="Controls\HtmlSubScript.cs" />
+    <Compile Include="Controls\HtmlSummary.cs" />
+    <Compile Include="Controls\HtmlSuperScript.cs" />
+    <Compile Include="Controls\HtmlTable.cs" />
+    <Compile Include="Controls\IMediaEventAttributes.cs" />
+    <Compile Include="Controls\IMouseEventAttributes.cs" />
+    <Compile Include="Controls\IKeyboardEventAttributes.cs" />
+    <Compile Include="Controls\IFormEventAttributes.cs" />
+    <Compile Include="Controls\IWindowEventAttributes.cs" />
+    <Compile Include="Controls\HtmlAbbreviation.cs" />
+    <Compile Include="Controls\HtmlAddress.cs" />
+    <Compile Include="Controls\HtmlArea.cs" />
+    <Compile Include="Controls\HtmlArticle.cs" />
+    <Compile Include="Controls\HtmlAside.cs" />
+    <Compile Include="Controls\HtmlAudio.cs" />
+    <Compile Include="Controls\HtmlBold.cs" />
+    <Compile Include="Controls\HtmlBase.cs" />
+    <Compile Include="Controls\HtmlSpan.cs" />
+    <Compile Include="Controls\HtmlTag.cs" />
+    <Compile Include="Controls\IGlobalAttributes.cs" />
+    <Compile Include="Enums\FindOperator.cs" />
+    <Compile Include="Events\TestRunnerEventArgs.cs" />
+    <Compile Include="Events\TestRunnerEventHandler.cs" />
+    <Compile Include="Extensions\ConditionAssert.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\ViewBaseExtensions.cs" />
+    <Compile Include="Helpers\HttpUtilities.cs" />
+    <Compile Include="IFindsByClassName.cs" />
+    <Compile Include="IFindsbyCssSelector.cs" />
+    <Compile Include="IFindsById.cs" />
+    <Compile Include="IFindsByLinkText.cs" />
+    <Compile Include="IFindsByName.cs" />
+    <Compile Include="IFindsByPartialLinkText.cs" />
+    <Compile Include="IFindsByTagName.cs" />
+    <Compile Include="IllegalLocatorException.cs" />
+    <Compile Include="ISearchContext.cs" />
+    <Compile Include="PageWithLayout.cs" />
+    <Compile Include="ElementNotRetrievedException.cs" />
+    <Compile Include="Enums\AlertAction.cs" />
+    <Compile Include="Enums\ClickAction.cs" />
+    <Compile Include="Extensions\ControlExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="InvalidAttributeException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Logging\RemoteNlogHelper.cs" />
+    <Compile Include="PageBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TestSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TestFramework\Browser.cs" />
+    <Compile Include="Controls\HtmlAnchor.cs" />
+    <Compile Include="Controls\HtmlControl.cs" />
+    <Compile Include="Controls\HtmlInput.cs" />
+    <Compile Include="Controls\HtmlInputPassword.cs" />
+    <Compile Include="Controls\HtmlInputSubmit.cs" />
+    <Compile Include="Controls\HtmlInputText.cs" />
+    <Compile Include="Controls\HtmlParagraph.cs" />
+    <Compile Include="Controls\HtmlSection.cs" />
+    <Compile Include="Extensions\TestExtensions.cs" />
+    <Compile Include="TestFramework\FrameworkLoader.cs" />
+    <Compile Include="Controls\HtmlDiv.cs" />
+    <Compile Include="TestFramework\ITestingFramework.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestRunner.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ViewBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
+    <Content Include="Lib\NLog.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MP.Feature.Test.Core.nuspec" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
