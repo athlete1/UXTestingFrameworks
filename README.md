@@ -1,4 +1,8 @@
-# UI.Selenium.Framework
+# UXTestingFrameworks
+
+UX.Testing.Core
+UX.Testing.Selenium
+UX.Testing.HtmlAgilityPack
 
 
 The MIT License (MIT)
