@@ -1,10 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HtmlSelect.cs" company="EBSCO Industries, Inc.">
-//   Copyright (c) 2015, Ebsco Information Services.  All Rights Reserved.
-// </copyright>
-// <summary>
-//   The html div.
-// </summary>
+﻿
 // --------------------------------------------------------------------------------------------------------------------
 namespace UX.Testing.HtmlAgilityPack.Controls
 {
