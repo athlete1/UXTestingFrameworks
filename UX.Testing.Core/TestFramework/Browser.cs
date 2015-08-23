@@ -96,6 +96,8 @@ namespace UX.Testing.Core.TestFramework
 		/// <summary>Gets the url.</summary>
 		public abstract string Url { get; }
 
+        public abstract string PageTitle { get; }
+
 		#endregion
 
 		#region Properties

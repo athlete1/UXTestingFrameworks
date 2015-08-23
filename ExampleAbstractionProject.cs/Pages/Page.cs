@@ -22,8 +22,6 @@ namespace ExampleAbstractionProject.Pages
         public Page(Browser browser, string url, int timeout, int interval) : base(browser, url, timeout, interval)
         { }
 
-        //public string Title { get { return this.Browser.NativeBrowser.CastTo<OpenQA.Selenium.IWebDriver>().Title; } }
-
         public virtual bool IsAtUrl()
         {
             return this.Browser.WaitForCondition(p => p.Url.Contains(this.Url), 3000, 250);

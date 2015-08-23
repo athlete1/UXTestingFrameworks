@@ -71,12 +71,14 @@ namespace UX.Testing.Selenium
 			}
 		}
 
-		#endregion
+        public override string PageTitle { get { return this.frameworkBrowser.Title; } }
 
-		#region Properties
+        #endregion
 
-		/// <summary>Gets the logger.</summary>
-		protected override sealed ILogger Logger { get; set; }
+        #region Properties
+
+        /// <summary>Gets the logger.</summary>
+        protected override sealed ILogger Logger { get; set; }
 
 		#endregion
 

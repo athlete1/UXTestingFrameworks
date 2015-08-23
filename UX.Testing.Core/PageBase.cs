@@ -10,6 +10,7 @@ namespace UX.Testing.Core
 {
 	using System;
 
+    using UX.Testing.Core.Extensions;
 	using UX.Testing.Core.TestFramework;
 
 	/// <summary>The page base.</summary>
@@ -54,13 +55,15 @@ namespace UX.Testing.Core
 			this.Url = url;
 		}
 
-		#endregion
+        #endregion
 
-		#region Public Methods and Operators
+        #region Public Methods and Operators
 
-		/// <summary>The navigate to.</summary>
-		/// <returns>The <see cref="bool"/>.</returns>
-		public virtual bool NavigateTo()
+        public string Title { get { return this.Browser.PageTitle; } }
+       
+        /// <summary>The navigate to.</summary>
+        /// <returns>The <see cref="bool"/>.</returns>
+        public virtual bool NavigateTo()
 		{
 			return this.NavigateTo(browser => browser.Url.Contains(this.Url));
 		}
