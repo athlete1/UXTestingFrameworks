@@ -89,7 +89,7 @@ namespace UX.Testing.Core.Logging
 			var msg = string.Format("DEBUG {0}: {1}", callingProgram, message);
 			this.nlogger.Debug(msg, parameters);
 			
-			if (TestSettings.Instance.DisableDiagnosticLogging)
+			if (IsDiagnosticLoggingDisabled())
 			{
 				return;
 			}
@@ -113,7 +113,7 @@ namespace UX.Testing.Core.Logging
 			var msg = string.Format("ERROR {0}: {1}", callingProgram, message);
 			this.nlogger.Error(msg, parameters);
 
-			if (TestSettings.Instance.DisableDiagnosticLogging)
+			if (IsDiagnosticLoggingDisabled())
 			{
 				return;
 			}
@@ -137,7 +137,7 @@ namespace UX.Testing.Core.Logging
 			var msg = string.Format("FATAL {0}: {1}", callingProgram, message);
 			this.nlogger.Fatal(msg, parameters);
 
-			if (TestSettings.Instance.DisableDiagnosticLogging)
+			if (IsDiagnosticLoggingDisabled())
 			{
 				return;
 			}
@@ -162,7 +162,7 @@ namespace UX.Testing.Core.Logging
 
 			this.nlogger.Info(msg, parameters);
 
-			if (TestSettings.Instance.DisableDiagnosticLogging)
+			if (IsDiagnosticLoggingDisabled())
 			{
 				return;
 			}
@@ -186,7 +186,7 @@ namespace UX.Testing.Core.Logging
 			var msg = string.Format("TRACE {0}: {1}", callingProgram, message);
 			this.nlogger.Trace(msg, parameters);
 
-			if (TestSettings.Instance.DisableDiagnosticLogging)
+			if (IsDiagnosticLoggingDisabled())
 			{
 				return;
 			}
@@ -210,7 +210,7 @@ namespace UX.Testing.Core.Logging
 			var msg = string.Format("WARNING {0}: {1}", callingProgram, message);
 			this.nlogger.Warn(msg, parameters);
 
-			if (TestSettings.Instance.DisableDiagnosticLogging)
+			if (IsDiagnosticLoggingDisabled())
 			{
 				return;
 			}
@@ -221,6 +221,18 @@ namespace UX.Testing.Core.Logging
 			}
 			catch 
 			{
+			}
+		}
+
+		private static bool IsDiagnosticLoggingDisabled()
+		{
+			try
+			{
+				return TestSettings.Instance.DisableDiagnosticLogging;
+			}
+			catch
+			{
+				return false;
 			}
 		}
 

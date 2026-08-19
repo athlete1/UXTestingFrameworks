@@ -10,7 +10,7 @@
 namespace UX.Testing.Core.Extensions
 {
 	using System;
-	using System.Web;
+	using System.Net;
 
 	/// <summary>The uri extensions.</summary>
 	public static class StringExtensions
@@ -28,11 +28,11 @@ namespace UX.Testing.Core.Extensions
 				throw new ArgumentNullException("encodedString");
 			}
 
-			var decodedString = HttpUtility.HtmlDecode(encodedString);
+			var decodedString = WebUtility.HtmlDecode(encodedString);
 			while (decodedString != encodedString)
 			{
 				encodedString = decodedString;
-				decodedString = HttpUtility.HtmlDecode(encodedString);
+				decodedString = WebUtility.HtmlDecode(encodedString);
 			}
 
 			return decodedString;
@@ -49,11 +49,11 @@ namespace UX.Testing.Core.Extensions
 				throw new ArgumentNullException("encodedString");
 			}
 
-			var decodedString = HttpUtility.UrlDecode(encodedString);
+			var decodedString = WebUtility.UrlDecode(encodedString);
 			while (decodedString != encodedString)
 			{
 				encodedString = decodedString;
-				decodedString = HttpUtility.UrlDecode(encodedString);
+				decodedString = WebUtility.UrlDecode(encodedString);
 			}
 
 			return decodedString;

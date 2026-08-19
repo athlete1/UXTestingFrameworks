@@ -41,9 +41,6 @@ namespace UX.Testing.Core
 		/// <summary>The logger.</summary>
 		private ILogger logger;
 
-		/// <summary>The test context.</summary>
-		private TestContext testContext;
-
 		/// <summary>The base url.</summary>
 		private string baseUrl;
 
@@ -126,18 +123,7 @@ namespace UX.Testing.Core
 		}
 
 		/// <summary>Gets or sets TestContext.</summary>
-		public TestContext TestContext
-		{
-			get
-			{
-				return this.testContext;
-			}
-
-			set
-			{
-				this.testContext = value;
-			}
-		}
+		public TestContext TestContext { get; set; }
 
 		#endregion
 
@@ -166,7 +152,7 @@ namespace UX.Testing.Core
 			try
 			{
 				// for when it runs via TeamCity
-				var testName = string.Format("{0}.{1}", this.testContext.FullyQualifiedTestClassName, this.TestContext.TestName);
+				var testName = string.Format("{0}.{1}", this.TestContext.FullyQualifiedTestClassName, this.TestContext.TestName);
 				return testName;
 			}
 			catch
@@ -190,10 +176,10 @@ namespace UX.Testing.Core
 		/// <summary>The log test result.</summary>
 		private void LogTestResult()
 		{
-			var currentTestOutcome = this.testContext.CurrentTestOutcome;
-			var testName = string.Format("{0}.{1}", this.testContext.FullyQualifiedTestClassName, this.TestContext.TestName);
+			var currentTestOutcome = this.TestContext.CurrentTestOutcome;
+			var testName = string.Format("{0}.{1}", this.TestContext.FullyQualifiedTestClassName, this.TestContext.TestName);
 			var message = string.Format("STATUS: '{0}' TEST: '{1}' {0}", currentTestOutcome.ToString().ToUpperInvariant(), testName);
-			switch (this.testContext.CurrentTestOutcome)
+			switch (this.TestContext.CurrentTestOutcome)
 			{
 				case UnitTestOutcome.Error:
 				case UnitTestOutcome.Failed:
@@ -229,7 +215,7 @@ namespace UX.Testing.Core
 			else
 			{
 				this.Logger.Info("---------- Starting Test {0} ----------", this.GetTestMethodName());
-				if (this.TestContext.DataRow == null || this.TestContext.DataRow == this.TestContext.DataRow.Table.Rows[0])
+				if (this.TestContext.IsFirstIteration())
 				{
 					this.Initialize();
 				}
@@ -243,7 +229,7 @@ namespace UX.Testing.Core
 		{
 			if (!this.screenShotTaken)
 			{
-				switch (this.testContext.CurrentTestOutcome)
+				switch (this.TestContext.CurrentTestOutcome)
 				{
 					case UnitTestOutcome.Error:
 					case UnitTestOutcome.Failed:
@@ -252,8 +238,7 @@ namespace UX.Testing.Core
 				}
 			}
 
-			if (this.newBrowserPerIteration || this.TestContext.DataRow == null
-				|| this.TestContext.DataRow == this.TestContext.DataRow.Table.Rows[this.TestContext.DataRow.Table.Rows.Count - 1])
+			if (this.newBrowserPerIteration || this.TestContext.IsLastIteration())
 			{
 				this.Logger.Trace("Test Framework Cleanup");
 				this.TestingFramework.Cleanup();

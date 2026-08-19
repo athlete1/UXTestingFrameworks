@@ -31,9 +31,6 @@
 		/// <summary>The logger.</summary>
 		private ILogger logger;
 
-		/// <summary>The test context.</summary>
-		private TestContext testContext;
-
 		/// <summary>The base url.</summary>
 		private string baseUrl;
 
@@ -107,18 +104,7 @@
 		}
 
 		/// <summary>Gets or sets TestContext.</summary>
-		public TestContext TestContext
-		{
-			get
-			{
-				return this.testContext;
-			}
-
-			set
-			{
-				this.testContext = value;
-			}
-		}
+		public TestContext TestContext { get; set; }
 
 		#endregion
 
@@ -174,7 +160,7 @@
 			try
 			{
 				// for when it runs via TeamCity
-				var testName = string.Format("{0}.{1}", this.testContext.FullyQualifiedTestClassName, this.TestContext.TestName);
+				var testName = string.Format("{0}.{1}", this.TestContext.FullyQualifiedTestClassName, this.TestContext.TestName);
 				return testName;
 			}
 			catch
@@ -198,10 +184,10 @@
 		/// <summary>The log test result.</summary>
 		private void LogTestResult()
 		{
-			var currentTestOutcome = this.testContext.CurrentTestOutcome;
-			var testName = string.Format("{0}.{1}", this.testContext.FullyQualifiedTestClassName, this.TestContext.TestName);
+			var currentTestOutcome = this.TestContext.CurrentTestOutcome;
+			var testName = string.Format("{0}.{1}", this.TestContext.FullyQualifiedTestClassName, this.TestContext.TestName);
 			var message = string.Format("STATUS: '{0}' TEST: '{1}' {0}", currentTestOutcome.ToString().ToUpperInvariant(), testName);
-			switch (this.testContext.CurrentTestOutcome)
+			switch (this.TestContext.CurrentTestOutcome)
 			{
 				case UnitTestOutcome.Error:
 				case UnitTestOutcome.Failed:
@@ -239,7 +225,7 @@
 		{
             if(!this.screenShotTaken)
             {
-                switch (this.testContext.CurrentTestOutcome)
+                switch (this.TestContext.CurrentTestOutcome)
                 {
                     case UnitTestOutcome.Failed:
                     case UnitTestOutcome.Error:

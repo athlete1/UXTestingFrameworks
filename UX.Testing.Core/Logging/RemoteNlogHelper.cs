@@ -24,7 +24,7 @@ namespace UX.Testing.Core.Logging
 		/// <summary>Initializes a new instance of the <see cref="RemoteNlogHelper"/> class.</summary>
 		public RemoteNlogHelper()
 		{
-			this.targetIP = ConfigurationManager.AppSettings["RemoteAgentLoggingIP"];
+			this.targetIP = ConfigurationHelper.GetAppSetting("RemoteAgentLoggingIP");
 		}
 
 		/// <summary>The enable remote udp logger.</summary>
@@ -35,13 +35,13 @@ namespace UX.Testing.Core.Logging
 				return;
 			}
 
-			var config = LogManager.Configuration;
+			var config = LogManager.Configuration ?? new LoggingConfiguration();
 
-			var consoleTarget = new NLogViewerTarget
+			var consoleTarget = new ChainsawTarget
 									{
 										Name = "RemoteLog2Console", 
 										Address = string.Format("udp://{0}:7071", this.targetIP), 
-										Layout = "${event-context:item=messageType} ${longdate} | ${level:uppercase=true} | ${stacktrace} | ${message}"
+										Layout = "${event-properties:item=messageType} ${longdate} | ${level:uppercase=true} | ${stacktrace} | ${message}"
 									};
 
 			config.AddTarget("RemoteLog2Console", consoleTarget);

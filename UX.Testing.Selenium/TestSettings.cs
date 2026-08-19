@@ -17,7 +17,7 @@ namespace UX.Testing.Selenium
 		{
 			get
 			{
-				return (TestSettings)ConfigurationManager.GetSection("seleniumTestSettings");
+				return UX.Testing.Core.ConfigurationHelper.GetSection<TestSettings>("seleniumTestSettings") ?? new TestSettings();
 			}
 		}
 
@@ -27,7 +27,7 @@ namespace UX.Testing.Selenium
 			get
 			{
 				int timeout;
-				var timeoutSetting = ConfigurationManager.AppSettings["CommandTimeout"];
+				var timeoutSetting = UX.Testing.Core.ConfigurationHelper.GetAppSetting("CommandTimeout");
 				if (!string.IsNullOrEmpty(timeoutSetting) && int.TryParse(timeoutSetting, out timeout))
 				{
 					return timeout;

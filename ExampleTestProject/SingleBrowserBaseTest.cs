@@ -47,9 +47,7 @@ namespace ExampleTestProject
 
         protected string GetTestParameter(string name)
         {
-            Assert.IsNotNull((object)this.TestContext.DataRow, "The datasource is not configured properly.");
-            Assert.IsTrue(this.TestContext.DataRow.Table.Columns.Contains(name), string.Format("The test parameter specified could not be found: {0}", (object)name));
-            return this.TestContext.DataRow[name].ToString();
+            return this.TestContext.GetDataValue(name);
         }
 
     }

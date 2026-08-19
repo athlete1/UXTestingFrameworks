@@ -9,6 +9,7 @@
 namespace UX.Testing.Core.TestFramework
 {
 	using System;
+	using System.IO;
 	using System.Reflection;
 
 	/// <summary>The framework loader.</summary>
@@ -37,7 +38,7 @@ namespace UX.Testing.Core.TestFramework
 		/// <exception cref="TypeLoadException"></exception>
 		internal static ITestingFramework LoadFrameworkInstance(string assembly, string type)
 		{
-			var dll = Assembly.Load(assembly);
+			var dll = LoadAssembly(assembly);
 			var assemblyType = dll.GetType(type);
 			if (assemblyType != null)
 			{
@@ -55,6 +56,24 @@ namespace UX.Testing.Core.TestFramework
 			}
 
 			throw new TypeLoadException("Type not found: " + type);
+		}
+
+		private static Assembly LoadAssembly(string assembly)
+		{
+			try
+			{
+				return Assembly.Load(new AssemblyName(assembly));
+			}
+			catch (Exception)
+			{
+				var path = Path.Combine(AppContext.BaseDirectory, assembly + ".dll");
+				if (File.Exists(path))
+				{
+					return Assembly.LoadFrom(path);
+				}
+
+				throw;
+			}
 		}
 
 		#endregion

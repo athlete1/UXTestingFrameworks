@@ -13,7 +13,6 @@ namespace UX.Testing.HtmlAgilityPack
 	using System.Collections.Generic;
 	using System.Collections.Specialized;
 	using System.Diagnostics;
-	using System.IO;
 	using System.Text;
 	using System.Web;
 
@@ -44,9 +43,6 @@ namespace UX.Testing.HtmlAgilityPack
 
 		/// <summary>The stopwatch.</summary>
 		private Stopwatch stopwatch = new Stopwatch();
-
-		/// <summary>The test context.</summary>
-		private TestContext testContext;
 
 		#endregion
 
@@ -81,18 +77,7 @@ namespace UX.Testing.HtmlAgilityPack
 		}
 
 		/// <summary>Gets or sets TestContext.</summary>
-		public TestContext TestContext
-		{
-			get
-			{
-				return this.testContext;
-			}
-
-			set
-			{
-				this.testContext = value;
-			}
-		}
+		public TestContext TestContext { get; set; }
 
 		/// <summary>Gets the testing framework.</summary>
 		public ITestingFramework TestingFramework { get; private set; }
@@ -162,7 +147,6 @@ namespace UX.Testing.HtmlAgilityPack
 			this.MockHttpResponse = new Mock<HttpResponseBase>();
 			this.MockHttpRequest = new Mock<HttpRequestBase>();
 			this.MockHttpSession = new Mock<HttpSessionStateBase>();
-			HttpContext.Current = new HttpContext(new HttpRequest(string.Empty, "http://tempuri.org", string.Empty), new HttpResponse(new StringWriter()));
 			this.Initialize();
 		}
 
@@ -184,7 +168,6 @@ namespace UX.Testing.HtmlAgilityPack
 		{
 			this.MockHttpResponse.SetupAllProperties();
 			this.MockHttpResponse.SetContentEncoding(Encoding.Default);
-			this.MockHttpResponse.Setup(m => m.ApplyAppPathModifier(It.IsAny<string>())).Returns((string virtualPath) => virtualPath);
 			this.MockHttpResponse.Setup(m => m.Cookies).Returns(new HttpCookieCollection());
 			this.MockHttpContext.SetupGet(m => m.Response).Returns(this.MockHttpResponse.Object);
 		}

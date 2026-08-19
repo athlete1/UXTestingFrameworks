@@ -18,7 +18,9 @@ namespace UX.Testing.Core.Helpers
 		/// </summary>
 		public static void IgnoreInvalidCertificates()
 		{
+#pragma warning disable SYSLIB0014
 			System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(AcceptAllCertifications);
+#pragma warning restore SYSLIB0014
 		}
 
 		/// <summary>

@@ -12,7 +12,6 @@ namespace UX.Testing.Selenium
 	using System.Collections.Generic;
 	using System.Collections.ObjectModel;
 	using System.Diagnostics;
-	using System.Drawing.Imaging;
 	using System.Linq;
 	using System.Text;
 	using System.Text.RegularExpressions;
@@ -26,7 +25,6 @@ namespace UX.Testing.Selenium
 
 	using OpenQA.Selenium;
 	using OpenQA.Selenium.Interactions;
-	using OpenQA.Selenium.Internal;
 	using OpenQA.Selenium.Support.UI;
 
 	/// <summary>The browser.</summary>
@@ -1771,7 +1769,7 @@ namespace UX.Testing.Selenium
 					this.WaitForCondition(waitForBehavior);
 				}
 			}
-			catch (ElementNotVisibleException)
+			catch (ElementNotInteractableException)
 			{
 				var control = this.GetFrameworkControl(htmlControl);
 				this.ScrollToMiddle(control);
@@ -2370,7 +2368,7 @@ namespace UX.Testing.Selenium
 			try
 			{
 				var screenShot = ((ITakesScreenshot)this.frameworkBrowser).GetScreenshot();
-				screenShot.SaveAsFile(filename, ImageFormat.Png);
+				screenShot.SaveAsFile(filename);
 			}
 			catch (Exception ex)
 			{

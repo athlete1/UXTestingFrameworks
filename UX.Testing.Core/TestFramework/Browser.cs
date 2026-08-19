@@ -43,7 +43,9 @@ namespace UX.Testing.Core.TestFramework
 		public Browser()
 		{
 			this.TestSettings = TestSettings.Instance;
+#pragma warning disable SYSLIB0014
 			ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+#pragma warning restore SYSLIB0014
 		}
 
 		#endregion
@@ -65,7 +67,11 @@ namespace UX.Testing.Core.TestFramework
 			/// <summary>The chrome.</summary>
 			Chrome, 
 
-			/// <summary>The phantom js.</summary>
+			/// <summary>The microsoft edge.</summary>
+			Edge,
+
+			/// <summary>The phantom js. Mapped to headless Chrome on .NET 10.</summary>
+			[Obsolete("PhantomJS is no longer supported. Chrome is launched in headless mode instead.")]
 			PhantomJS, 
 
 			/// <summary>The unit test.</summary>

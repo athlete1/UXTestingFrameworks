@@ -23,7 +23,7 @@ namespace UX.Testing.Core
 			get
 			{
 				// appsetting override to support legacy test framework test runner code
-				var baseurl = ConfigurationManager.AppSettings["BaseUrl"];
+				var baseurl = ConfigurationHelper.GetAppSetting("BaseUrl");
 				if (!string.IsNullOrEmpty(baseurl))
 				{
 					return baseurl;
@@ -60,7 +60,7 @@ namespace UX.Testing.Core
 			{
 				// appsetting override to support legacy test framework test runner code
 				Browser.BrowserType browser;
-				var browserSetting = ConfigurationManager.AppSettings["Browser"];
+				var browserSetting = ConfigurationHelper.GetAppSetting("Browser");
 				if (!string.IsNullOrEmpty(browserSetting) && Enum.TryParse(browserSetting, true, out browser))
 				{
 					return browser;
@@ -130,7 +130,14 @@ namespace UX.Testing.Core
 		{
 			get
 			{
-				return (TestSettings)ConfigurationManager.GetSection("testSettings");
+				var settings = ConfigurationHelper.GetSection<TestSettings>("testSettings");
+				if (settings == null)
+				{
+					throw new ConfigurationErrorsException(
+						"The <testSettings> configuration section was not found. Add it to App.config and ensure the file is copied to the output directory.");
+				}
+
+				return settings;
 			}
 		}
 
@@ -153,7 +160,7 @@ namespace UX.Testing.Core
 		{
 			get
 			{
-				var screencapture = ConfigurationManager.AppSettings["DisableDiagnosticLogging"];
+				var screencapture = ConfigurationHelper.GetAppSetting("DisableDiagnosticLogging");
 				if (!string.IsNullOrEmpty(screencapture))
 				{
 					return bool.Parse(screencapture);
@@ -173,7 +180,7 @@ namespace UX.Testing.Core
 		{
 			get
 			{
-				var screencapture = ConfigurationManager.AppSettings["screencapture"];
+				var screencapture = ConfigurationHelper.GetAppSetting("screencapture");
 				if (!string.IsNullOrEmpty(screencapture))
 				{
 					return bool.Parse(screencapture);
@@ -193,7 +200,7 @@ namespace UX.Testing.Core
 		{
 			get
 			{
-				var autowaitforpageload = ConfigurationManager.AppSettings["autowaitforpageload"];
+				var autowaitforpageload = ConfigurationHelper.GetAppSetting("autowaitforpageload");
 				if (!string.IsNullOrEmpty(autowaitforpageload))
 				{
 					return bool.Parse(autowaitforpageload);
@@ -213,7 +220,7 @@ namespace UX.Testing.Core
 		{
 			get
 			{
-				var waitTime = ConfigurationManager.AppSettings["ScrollToMiddleWaitTime"];
+				var waitTime = ConfigurationHelper.GetAppSetting("ScrollToMiddleWaitTime");
 				if (!string.IsNullOrEmpty(waitTime))
 				{
 					return int.Parse(waitTime);
@@ -233,7 +240,7 @@ namespace UX.Testing.Core
 		{
 			get
 			{
-				var waitTime = ConfigurationManager.AppSettings["MouseOverWaitTime"];
+				var waitTime = ConfigurationHelper.GetAppSetting("MouseOverWaitTime");
 				if (!string.IsNullOrEmpty(waitTime))
 				{
 					return int.Parse(waitTime);
@@ -253,7 +260,7 @@ namespace UX.Testing.Core
 		{
 			get
 			{
-				var waitTime = ConfigurationManager.AppSettings["MouseOutWaitTime"];
+				var waitTime = ConfigurationHelper.GetAppSetting("MouseOutWaitTime");
 				if (!string.IsNullOrEmpty(waitTime))
 				{
 					return int.Parse(waitTime);
@@ -273,7 +280,7 @@ namespace UX.Testing.Core
 		{
 			get
 			{
-				var waitTime = ConfigurationManager.AppSettings["MouseHoverWaitTime"];
+				var waitTime = ConfigurationHelper.GetAppSetting("MouseHoverWaitTime");
 				if (!string.IsNullOrEmpty(waitTime))
 				{
 					return int.Parse(waitTime);
@@ -293,7 +300,7 @@ namespace UX.Testing.Core
 		{
 			get
 			{
-				var waitTime = ConfigurationManager.AppSettings["MouseLeaveWaitTime"];
+				var waitTime = ConfigurationHelper.GetAppSetting("MouseLeaveWaitTime");
 				if (!string.IsNullOrEmpty(waitTime))
 				{
 					return int.Parse(waitTime);
@@ -313,7 +320,7 @@ namespace UX.Testing.Core
 		{
 			get
 			{
-				var waitTime = ConfigurationManager.AppSettings["MouseEnterWaitTime"];
+				var waitTime = ConfigurationHelper.GetAppSetting("MouseEnterWaitTime");
 				if (!string.IsNullOrEmpty(waitTime))
 				{
 					return int.Parse(waitTime);
