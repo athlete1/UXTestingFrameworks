@@ -24,7 +24,7 @@ namespace ExampleTestProject
         [AssemblyCleanup]
         public static void CleanupAssembly()
         {
-            testingFramework.Cleanup();
+            testingFramework?.Cleanup();
         }
     }
 }

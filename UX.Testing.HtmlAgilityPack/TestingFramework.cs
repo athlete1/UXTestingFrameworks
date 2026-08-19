@@ -51,7 +51,7 @@ namespace UX.Testing.HtmlAgilityPack
 		public void Cleanup()
 		{
 			this.Logger.Trace("Closing browser document...");
-			this.Browser.Close();
+			this.Browser?.Close();
 		}
 	}
 }

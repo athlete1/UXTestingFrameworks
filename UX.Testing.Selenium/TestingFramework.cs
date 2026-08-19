@@ -75,7 +75,7 @@ namespace UX.Testing.Selenium
 		public void Cleanup()
 		{
 			this.Logger.Trace("Closing browser...");
-		    this.Browser.Close();
+			this.Browser?.Close();
 		}
 
 		/// <summary>The map browser type.</summary>
